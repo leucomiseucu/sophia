@@ -29,12 +29,14 @@ body {
 }
 
 .profile-img {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   border: 4px solid #bb86fc;
   margin-bottom: 20px;
   object-fit: cover;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s ease;
 }
 
 .name {
@@ -63,8 +65,47 @@ body {
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
+  background-color: rgba(0,0,0,0.3);
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background 0.3s;
 }
 
+.volume-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Bloco de mensagem extra */
+.message-block {
+  margin-top: 40px;
+  padding: 0 20px;
+  animation: fadeIn 2s ease;
+}
+
+.message-block h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffd6ff;
+}
+
+.message-block p {
+  font-size: 1.1rem;
+  max-width: 520px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 60px;
+  padding: 20px 10px 40px;
+  font-size: 0.9rem;
+  color: #eee;
+  animation: fadeIn 2s ease;
+}
+
+/* Animações */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -73,4 +114,24 @@ body {
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}
+
+/* Responsividade simples */
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .profile-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .description, .message-block p {
+    font-size: 1rem;
+  }
 }
