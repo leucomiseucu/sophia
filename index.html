@@ -4,28 +4,79 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sophia 💜</title>
-  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-  <div class="volume-button" onclick="toggleMusic()">🔊</div>
-  
-  <!-- Música local -->
-  <audio id="bg-music" loop autoplay muted>
+<body style="margin:0; font-family:Arial, sans-serif; background:linear-gradient(to bottom right, #8e44ad, #3498db); color:white; text-align:center;">
+
+  <!-- Botão de música -->
+  <div onclick="toggleMusic()" id="volumeBtn" style="position:fixed; top:15px; right:15px; font-size:24px; cursor:pointer;">🔇</div>
+  <audio id="bg-music" loop>
     <source src="sophia.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
-
-  <div class="container">
-    <img src="https://media.discordapp.net/attachments/1384401305837113385/1387099455760629832/image.png?ex=685c1c89&is=685acb09&hm=3cf3c029e07c094821db1a34a9090b02914b8879fc87cbdf3c1d7e2278a52d1f&=&format=webp&quality=lossless&width=319&height=350" alt="Sophia" class="profile-img" />
-    <h1 class="name">Sophia 💜</h1>
-    <p class="description">
+  <!-- Conteúdo principal -->
+  <div style="padding: 40px 20px;">
+    <h1 style="font-size:2.8em; margin-bottom: 10px;">Sophia 💜</h1>
+    <p style="font-size:1.2em; max-width:600px; margin: 0 auto 30px;">
       Um ser humano raro: linda, generosa, forte e brilhante como poucas. <br>
-      Quem tem você na vida, tem sorte.
+      Quem tem você na vida, tem sorte. E eu tenho a sorte de te conhecer. 🌟
     </p>
-    <div class="hearts">💜 ✨ 🌸 💫 💜</div>
+    
+    <div style="font-size:1.5em; margin-bottom: 40px;">💜 ✨ 🌸 💫 💜</div>
+
+    <!-- Carrossel -->
+    <div id="carousel" style="position:relative; width:100%; max-width:350px; margin:0 auto;">
+      <img id="carouselImage" src="https://media.discordapp.net/attachments/1392687200034095255/1402823222814183466/image.png?ex=6895506f&is=6893feef&hm=1f59e89536737e7a20087af3555aa3255a8aa4852d0b793c2da2c4c14f0f74e2&=&format=webp&quality=lossless" 
+           alt="Sophia" 
+           style="width:100%; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.5);" />
+    </div>
+
+    <!-- Frases bonitas -->
+    <div style="margin-top:40px;">
+      <h2 style="font-size:1.8em;">💌 Para a melhor pessoa do mundo</h2>
+      <p style="font-size:1.1em; max-width:600px; margin:20px auto;">
+        Sua presença ilumina tudo ao redor. Você é poesia viva, é luz em forma de gente.<br>
+        Obrigado por ser exatamente quem você é. 🌷<br><br>
+        Quando sorrir, lembre-se: tem alguém aqui que ama ver sua felicidade florescer. 💐
+      </p>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Rodapé -->
+  <footer style="margin-top:60px; padding:20px; font-size:0.9em; color:#eee;">
+    Feito com 💜 por alguém que te admira demais
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const music = document.getElementById('bg-music');
+    const volumeBtn = document.getElementById('volumeBtn');
+
+    function toggleMusic() {
+      if (music.paused || music.muted) {
+        music.muted = false;
+        music.play();
+        volumeBtn.textContent = '🔊';
+      } else {
+        music.pause();
+        volumeBtn.textContent = '🔇';
+      }
+    }
+
+    // Carrossel de imagens
+    const images = [
+      "https://media.discordapp.net/attachments/1392687200034095255/1402823222814183466/image.png?ex=6895506f&is=6893feef&hm=1f59e89536737e7a20087af3555aa3255a8aa4852d0b793c2da2c4c14f0f74e2&=&format=webp&quality=lossless",
+      "https://media.discordapp.net/attachments/1392687200034095255/1402824315627638965/image.png?ex=68955174&is=6893fff4&hm=bde6294bee5aef80da0c69bb49a563002644f0fefd5e6da6ce954f0234b12e1b&=&format=webp&quality=lossless"
+    ];
+
+    let currentImage = 0;
+    const carouselImage = document.getElementById('carouselImage');
+
+    setInterval(() => {
+      currentImage = (currentImage + 1) % images.length;
+      carouselImage.src = images[currentImage];
+    }, 4000); // troca a cada 4 segundos
+  </script>
+
 </body>
 </html>
